@@ -5,6 +5,7 @@
 using namespace std;
 
 void readDataFromFile(string filePath, vector<vector<double> >& vecs, vector<int>& response);
+void readDataFromKeyboard(vector<vector<double> >& vecs, vector<int>& response);
 
 int main()
 {
@@ -13,9 +14,10 @@ int main()
 
 	readDataFromFile("data.txt", trainData, response);
 	Perceptron perceptron = Perceptron();
-	perceptron.setItrNum(1);
-	perceptron.setLRate(1);
-	perceptron.train(trainData,response);
+	perceptron.setItrNum(1);	//设置迭代次数
+	perceptron.setLRate(1);		//设置学习率
+	perceptron.train(trainData,response);	//训练
+	perceptron.showWeights();
 	system("pause");
 	return 0;
 }

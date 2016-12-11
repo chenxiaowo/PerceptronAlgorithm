@@ -27,7 +27,19 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 
 
 }
-
+//显示权矢量
+void Perceptron::showWeights()
+{
+	cout << endl<<"权矢量为：";
+	vector<double>::const_iterator i = weights.begin();
+	cout << *i++;
+	for (; i < weights.end(); i++)
+	{
+		cout <<","<<*i;
+	}
+	cout << endl;
+}
+//训练数据的增广化
 void Perceptron::augmentation(vector<vector<double> >& trainData)
 {
 	vector<vector<double> >::iterator itr;
@@ -36,7 +48,7 @@ void Perceptron::augmentation(vector<vector<double> >& trainData)
 		itr->push_back(1);
 	}
 }
-
+//符号规范化
 void Perceptron::symbolNormalization(vector<vector<double>>& trainData, const vector<int>& response)
 {
 	vector<vector<double> >::iterator dataItr;
@@ -53,7 +65,7 @@ void Perceptron::symbolNormalization(vector<vector<double>>& trainData, const ve
 		}
 	}
 }
-
+//两个水平向量相乘（无需转置），结果为一个数
 double Perceptron::mult(const vector<double> &left, const vector<double> &right)
 {
 	double result = 0;
