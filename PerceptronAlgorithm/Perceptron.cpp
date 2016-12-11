@@ -31,13 +31,20 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 void Perceptron::showWeights()
 {
 	cout << endl<<"权矢量为：";
-	vector<double>::const_iterator i = weights.begin();
-	cout << *i++;
-	for (; i < weights.end(); i++)
+	vector<double>::const_iterator weightsItr = weights.begin();
+	cout << *weightsItr++;
+	for (; weightsItr < weights.end(); weightsItr++)
 	{
-		cout <<","<<*i;
+		cout <<","<<*weightsItr;
 	}
-	cout << endl;
+	cout << endl << "区分界面为：";
+	weightsItr = weights.begin();
+	cout << *weightsItr++ << "x" << 1 ;
+	for (int i = 2; i < weights.size(); i++)
+	{
+		cout << "+"<< *weightsItr++<<"x"<<i;
+	}
+	cout << "+" << *weightsItr <<"=0"<< endl;
 }
 //训练数据的增广化
 void Perceptron::augmentation(vector<vector<double> >& trainData)
