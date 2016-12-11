@@ -11,17 +11,20 @@ Perceptron::~Perceptron()
 {
 }
 
-void Perceptron::train(const vector<vector<double> >& trainData, const vector<vector<int> >& response)
+void Perceptron::train(const vector<vector<double> >& trainData, const vector<int>& response)
 {
-	if (weights.empty())
+	if (weights.empty())		//当weights没有被初始化时
 	{
-		weights = vector<double>(trainData[0].size, 1);
+		weights = vector<double>(trainData[0].size() + 1, 1);		//将其所有权值初始化为1
 	}
 	x = trainData;
 	augmentation(x);
 	symbolNormalization(x, response);
 
-	//x为已增广化和符号规范化的训练数据,weights为权矢量
+	//用到的成员变量和函数
+	//x为已增广化和符号规范化的训练数据,weights为权矢量，itrNum为迭代次数，lRate为学习率，mult()为两水平向量相乘函数
+	//开始训练
+
 
 }
 
@@ -34,21 +37,16 @@ void Perceptron::augmentation(vector<vector<double> >& trainData)
 	}
 }
 
-void Perceptron::symbolNormalization(vector<vector<double>>& trainData, const vector<vector<int>>& response)
+void Perceptron::symbolNormalization(vector<vector<double>>& trainData, const vector<int>& response)
 {
 	vector<vector<double> >::iterator dataItr;
-	vector<vector<int> >::const_iterator respItr;
-	for (dataItr = trainData.begin(),respItr = response.begin(); dataItr != trainData.end()||respItr !=response.end(); dataItr++,respItr++)
+	vector<int>::const_iterator respItr;
+	for (dataItr = trainData.begin(), respItr = response.begin(); dataItr != trainData.end() || respItr != response.end(); dataItr++, respItr++)
 	{
-		vector<int>::const_iterator respInnerItr = respItr->begin();
-		int i;
-		for (i = 0; i < respItr->size()&& *respInnerItr++ != 1; i++)
-		{
-		}
-		if (i==1)		//当属于第二类时，将其符号乘以-1
+		if (*respItr == 1)		//当属于第二类时，将其符号乘以-1
 		{
 			vector<double>::iterator dataInnerItr;
-			for (dataInnerItr= dataItr->begin(); dataInnerItr < dataItr->end(); dataInnerItr++)
+			for (dataInnerItr = dataItr->begin(); dataInnerItr < dataItr->end(); dataInnerItr++)
 			{
 				*dataInnerItr = 0 - *dataInnerItr;
 			}
