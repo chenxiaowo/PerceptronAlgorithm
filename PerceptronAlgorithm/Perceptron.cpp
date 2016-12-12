@@ -29,23 +29,34 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 	vector<double> samk;
 	double d = 0;
 	int count = 0;
+	vector<int> err;
 	while (true)
 	{
 		after = weights;
 		samk = x[k % 4];
 		d = mult(after, samk);
-		//cout << k << endl;
-		//cout << d << endl;
-		//system("pause");
+		cout <<"步数："<< k+1 << endl;
+		cout <<"d>0?    " <<(d>0) << endl;
+		system("pause");
 		if (d > 0)
 		{
 			count++;
+			err.push_back(k%4);
 		}
 		else
 		{
+			cout <<"当前错分的样本：" << endl;
+			for (int i = 0; i < err.size(); i++)
+			{
+				vector<double> tmp = x[err[i]];
+				cout << "(" << tmp[0] << "," << tmp[1] << ")" << endl;
+			}
+			
+			cout << "错分的数量"<<count<< endl;
 			add(after, samk, lRate);
 			weights = after;
 			count = 0;
+			err.clear();
 		}
 
 		k++;
@@ -53,6 +64,16 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 		{
 			break;
 		}
+		cout <<"当前的权矢量：" << endl;
+		vector<double>::const_iterator weightsItr = weights.begin();
+		cout << *weightsItr++;
+		for (; weightsItr < weights.end(); weightsItr++)
+		{
+			cout << "," << *weightsItr;
+		}
+		cout << endl;
+		cout << "\t" << endl;
+		system("pause");
 	}
 
 }
