@@ -34,9 +34,9 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 		after = weights;
 		samk = x[k % 4];
 		d = mult(after, samk);
-		cout << k << endl;
-		cout << d << endl;
-		system("pause");
+		//cout << k << endl;
+		//cout << d << endl;
+		//system("pause");
 		if (d > 0)
 		{
 			count++;
