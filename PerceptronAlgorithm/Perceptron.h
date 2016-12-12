@@ -17,8 +17,8 @@ public:
 	void setWeights(vector<double>) { this->weights = weights; }
 
 	void showWeights();
-	void saveWeights(string filePath);
-	void readWeights(string filePath);
+	void saveWeights(string filePath);	//将weights写到文件
+	void readWeights(string filePath);	//将weights从文件中读出
 
 private:
 	vector<double> weights;

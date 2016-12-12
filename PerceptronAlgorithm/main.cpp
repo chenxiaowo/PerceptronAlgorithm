@@ -5,7 +5,7 @@
 using namespace std;
 
 void readDataFromFile(string filePath, vector<vector<double> >& vecs, vector<int>& response);
-void readDataFromKeyboard(vector<vector<double> >& vecs, vector<int>& response);
+void readDataFromKeyboard(vector<vector<double> >& vecs, vector<int>& response);	//从键盘获得训练数据或测试数据 vecs存放的是数据，response是每条数据对应的类别，在二分类里，0为第一类，1为第二类
 
 int main()
 {
@@ -21,7 +21,7 @@ int main()
 	system("pause");
 	return 0;
 }
-
+//从文件中读取测试数据或者训练数据
 void readDataFromFile(string filePath, vector<vector<double> >& vecs, vector<int>& response)
 {
 	ifstream in;
