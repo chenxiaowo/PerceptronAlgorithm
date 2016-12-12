@@ -31,5 +31,5 @@ private:
 	void symbolNormalization(vector<vector<double> >& trainData, const vector<int>& response);	//符号规范化
 
 	double mult(const vector<double> &left, const vector<double> &right);		//两个水平向量相乘（无需转置），结果为一个数
-
+	void add(vector<double> &left, const vector<double> &right, double lRate);//两个水平向量相加
 };

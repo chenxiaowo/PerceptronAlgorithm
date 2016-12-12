@@ -24,7 +24,36 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 	//用到的成员变量和函数
 	//x为已增广化和符号规范化的训练数据,weights为权矢量，itrNum为迭代次数，lRate为学习率，mult()为两水平向量相乘函数
 	//开始训练
+	int k = itrNum-1;
+	vector<double> after = weights;
+	vector<double> samk;
+	double d = 0;
+	int count = 0;
+	while (true)
+	{
+		after = weights;
+		samk = x[k % 4];
+		d = mult(after, samk);
+		cout << k << endl;
+		cout << d << endl;
+		system("pause");
+		if (d > 0)
+		{
+			count++;
+		}
+		else
+		{
+			add(after, samk, lRate);
+			weights = after;
+			count = 0;
+		}
 
+		k++;
+		if (count >= 3)
+		{
+			break;
+		}
+	}
 
 }
 //显示权矢量
@@ -82,4 +111,13 @@ double Perceptron::mult(const vector<double> &left, const vector<double> &right)
 		result += *itrLeft * *itrRight;
 	}
 	return result;
+}
+
+//两个水平向量相加
+void Perceptron:: add(vector<double> &left, const vector<double> &right,double lRate)
+{
+	for (int i = 0; i < left.size(); i++)
+	{
+		left[i] += right[i]*lRate;
+	}
 }
