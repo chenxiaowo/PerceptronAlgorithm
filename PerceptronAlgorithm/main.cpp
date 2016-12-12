@@ -15,16 +15,16 @@ int main()
 	vector<vector<double> > trainData, testData;
 	vector<int> trainResponse, testResponse, testResult;
 	cout << "请选择数据来源 ：    1-文件    2-输入：" << endl;
-	//cin >> select;
-	//getchar();
-	//if (select == 1)
-	//{
-	//	
-	//}
-	//else
-	//{
-	//	readDataFromKeyboard(trainData, trainResponse, "data.txt");
-	//}
+	cin >> select;
+	getchar();
+	if (select == 1)   
+	{
+		
+	}
+	else
+	{
+		readDataFromKeyboard(trainData, trainResponse, "data.txt");
+	}
 	readDataFromFile("data.txt", trainData, trainResponse);
 	readDataFromFile("test.txt", testData, testResponse);
 	Perceptron perceptron = Perceptron();

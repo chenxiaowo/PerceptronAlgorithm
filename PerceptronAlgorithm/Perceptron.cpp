@@ -37,7 +37,7 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 		d = mult(after, samk);
 		cout <<"²½Êý£º"<< k+1 << endl;
 		cout <<"d>0?    " <<(d>0) << endl;
-		system("pause");
+		//system("pause");
 		if (d > 0)
 		{
 			count++;
@@ -73,7 +73,7 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 		}
 		cout << endl;
 		cout << "\t" << endl;
-		system("pause");
+		
 	}
 
 }
