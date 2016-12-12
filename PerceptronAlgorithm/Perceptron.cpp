@@ -80,16 +80,19 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 //测试感知器,对测试数据进行分类
 void Perceptron::predict(const vector<vector<double> >& input, vector<int>& output)
 {
+	vector<vector<double> > test = input;
+	augmentation(test);
 	vector<vector<double> >::const_iterator inputItr;
-	for (inputItr = input.begin(); inputItr != input.end() ; inputItr++)
+	
+	for (inputItr = test.begin(); inputItr != test.end() ; inputItr++)
 	{
 		if (mult(*inputItr, weights) > 0)
 		{
-			output.push_back(1);
+			output.push_back(0);
 		}
 		else
 		{
-			output.push_back(0);
+			output.push_back(1);
 		}
 	}
 }
