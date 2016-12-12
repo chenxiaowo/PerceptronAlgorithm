@@ -56,6 +56,9 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 	}
 
 }
+void Perceptron::predict(const vector<double>& input, vector<int>& output)
+{
+}
 //œ‘ æ»® ∏¡ø
 void Perceptron::showWeights()
 {
