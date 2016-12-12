@@ -56,8 +56,21 @@ void Perceptron::train(const vector<vector<double> >& trainData, const vector<in
 	}
 
 }
-void Perceptron::predict(const vector<double>& input, vector<int>& output)
+//测试感知器,对测试数据进行分类
+void Perceptron::predict(const vector<vector<double> >& input, vector<int>& output)
 {
+	vector<vector<double> >::const_iterator inputItr;
+	for (inputItr = input.begin(); inputItr != input.end() ; inputItr++)
+	{
+		if (mult(*inputItr, weights) > 0)
+		{
+			output.push_back(1);
+		}
+		else
+		{
+			output.push_back(0);
+		}
+	}
 }
 //显示权矢量
 void Perceptron::showWeights()

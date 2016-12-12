@@ -10,7 +10,7 @@ public:
 	virtual ~Perceptron();
 
 	void train(const vector<vector<double> >& trainData, const vector<int>& response);	//训练样本得到权矢量
-	void predict(const vector<double>& input, vector<int>& output);			//测试感知器,对测试数据进行分类
+	void predict(const vector<vector<double> >& input, vector<int>& output);			//测试感知器,对测试数据进行分类
 
 	void setItrNum(int itrNum) { this->itrNum = itrNum; }
 	void setLRate(float lRate) { this->lRate = lRate; }
