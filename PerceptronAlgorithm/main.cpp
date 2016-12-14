@@ -32,10 +32,10 @@ int main()
 	perceptron.setLRate(1);		//设置学习率
 	perceptron.train(trainData, trainResponse);	//使用训练样本对感知器进行训练
 	perceptron.showWeights();	//输出权向量及其函数
-	system("pause");
-	perceptron.predict(testData, testResult);	//用训练好的感知器进行分类
-	cout << endl << "测试样本的正确率为：" << getAccuracy(testResult, testResponse);	//显示测试结果
 	
+	perceptron.predict(testData, testResult);	//用训练好的感知器进行分类
+	cout << endl << "测试样本的正确率为：" << getAccuracy(testResult, testResponse)<<endl;	//显示测试结果
+	system("pause");
 	return 0;
 }
 //从文件中读取测试数据或者训练数据
