@@ -1,16 +1,16 @@
 #include "Perceptron.h"
 
 
-
+//构造函数
 Perceptron::Perceptron()
 {
 }
 
-
+//析构函数
 Perceptron::~Perceptron()
 {
 }
-
+//进行训练，得到权值向量并显示
 void Perceptron::train(const vector<vector<double> >& trainData, const vector<int>& response)
 {
 	if (weights.empty())		//当weights没有被初始化时
